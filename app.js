@@ -13,10 +13,11 @@ app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use('/api/products', productRoute);
-app.use("/images", express.static('uploads'))
+//app.use("/images", express.static('uploads'))
 
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/api/files",express.static(path.join(__dirname, "upload")));
 
 
 // const connectDB = async () =>{
