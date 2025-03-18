@@ -5,7 +5,7 @@ dotenv.config()
 const productRoute = require('./routes/productRoute.js');
 var cors = require('cors')
 var path = require('path')
-const connectDB = require('./db/db.js')
+// const connectDB = require('./db/db.js')
 
 const app = express()
 
@@ -19,16 +19,16 @@ app.use("/images", express.static('uploads'))
 app.use(express.static(path.join(__dirname, "build")));
 
 
-// const connectDB = async () =>{
-//     try{
-//   const conn =await mongoose.connect(process.env.DB_URI)
-//    console.log(`MongoDB Connected: ${conn.connection.host}`);
+const connectDB = async () =>{
+    try{
+  const conn =await mongoose.connect('mongodb+srv://sirwin2win:Chiemerie1@cluster0.4lsxu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+   console.log(`MongoDB Connected: ${conn.connection.host}`);
   
-//   } catch(error) {
-//     console.error(`Error: ${error.message}`)
-//     process.exit()
-//   }
-//   }
+  } catch(error) {
+    console.error(`Error: ${error.message}`)
+    process.exit()
+  }
+  }
   connectDB()
 
 
